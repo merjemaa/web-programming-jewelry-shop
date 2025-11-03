@@ -8,10 +8,8 @@ class Auth {
     }
 
     async login(email, password) {
-        // Simulate API call - in real app, this would be a fetch to your backend
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                // Mock authentication - in real app, validate against backend
                 if (email && password.length >= 6) {
                     const user = {
                         id: 1,
@@ -35,7 +33,6 @@ class Auth {
     async register(name, email, password, confirmPassword) {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                // Mock registration - in real app, send to backend
                 if (password !== confirmPassword) {
                     reject(new Error('Passwords do not match'));
                     return;
@@ -78,12 +75,9 @@ class Auth {
     }
 }
 
-// Initialize auth
 const auth = new Auth();
 
-// Auth form handlers
 document.addEventListener('DOMContentLoaded', () => {
-    // Login form
     const loginForm = document.getElementById('login-form');
     if (loginForm) {
         loginForm.addEventListener('submit', async (e) => {
@@ -116,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Register form
     const registerForm = document.getElementById('register-form');
     if (registerForm) {
         registerForm.addEventListener('submit', async (e) => {
