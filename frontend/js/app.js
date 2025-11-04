@@ -1,22 +1,18 @@
-// Main application initialization
 class App {
     constructor() {
         this.init();
     }
 
     init() {
-        // Initialize any global functionality
         this.setupEventListeners();
         this.checkAuthStatus();
     }
 
     setupEventListeners() {
-        // Global event listeners
         document.addEventListener('click', this.handleGlobalClicks.bind(this));
     }
 
     handleGlobalClicks(e) {
-        // Handle add to cart buttons
         if (e.target.classList.contains('add-to-cart') || e.target.closest('.add-to-cart')) {
             e.preventDefault();
             const button = e.target.classList.contains('add-to-cart') ? e.target : e.target.closest('.add-to-cart');
@@ -33,13 +29,11 @@ class App {
         if (cart) {
             cart.addItem(productId, productName, productPrice, productImage);
             
-            // Show success message
             this.showAlert('Product added to cart!', 'success');
         }
     }
 
     showAlert(message, type = 'info') {
-        // Remove existing alert if any
         const existingAlert = document.querySelector('.alert-message');
         if (existingAlert) {
             existingAlert.remove();
@@ -54,7 +48,6 @@ class App {
         
         document.body.appendChild(alertDiv);
         
-        // Auto remove after 3 seconds
         setTimeout(() => {
             if (alertDiv.parentNode) {
                 alertDiv.remove();
@@ -63,7 +56,6 @@ class App {
     }
 
     checkAuthStatus() {
-        // Check if user is logged in (for future backend integration)
         const token = localStorage.getItem('aura_jewels_token');
         if (token) {
             this.updateAuthUI(true);
@@ -112,7 +104,6 @@ class App {
     }
 }
 
-// Initialize app when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     window.app = new App();
 });

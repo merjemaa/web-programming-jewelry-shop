@@ -1,0 +1,41 @@
+┌─────────────┐    ┌───────────────┐    ┌───────────────┐
+│   users     │    │  cart_items   │    │   products    │
+├─────────────┤    ├───────────────┤    ├───────────────┤
+│ id (PK)     │◄───│ user_id (FK)  │    │ id (PK)       │
+│ email       │    │ product_id(FK)│───►│ name          │
+│ password    │    │ quantity      │    │ price         │
+│ full_name   │    │ added_at      │    │ image_url     │
+│ role        │    └───────────────┘    │category_id(FK)│
+│ created_at  │                         │external_id    │
+└─────────────┘                         │ stock_quantity│
+       │                                └───────────────┘
+       │                                        ▲
+       │                                        │
+       ▼                                        │
+┌─────────────┐    ┌───────────────┐            │
+│   orders    │    │ order_items   │            │
+├─────────────┤    ├───────────────┤            │
+│ id (PK)     │◄───│ order_id (FK) │            │
+│ user_id (FK)│    │ product_id(FK)│────────────┘
+│ total_amount│    │ quantity      │
+│ status      │    │ unit_price    │
+│ order_date  │    └───────────────┘
+└─────────────┘
+       │
+       │
+       ▼
+┌─────────────┐    ┌───────────────┐
+│  contacts   │    │  categories   │
+├─────────────┤    ├───────────────┤
+│ id (PK)     │    │ id (PK)       │
+│ full_name   │    │ name          │ ◀── "all", "necklace", "ring", "earring"
+│ email       │    │ description   │
+│ subject     │    └───────────────┘
+│ message     │
+│ submitted_at│    ┌───────────────┐
+└─────────────┘    │ subscribers   │
+                   ├───────────────┤
+                   │ id (PK)       │
+                   │ email         │
+                   │ subscribed_at │
+                   └───────────────┘

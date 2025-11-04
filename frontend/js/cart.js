@@ -38,7 +38,6 @@ class Cart {
         this.saveCart();
         this.updateCartCount();
         
-        // If we're on the cart page, refresh the display
         if (window.location.hash === '#cart') {
             this.displayCartItems();
         }
@@ -54,7 +53,6 @@ class Cart {
                 this.saveCart();
                 this.updateCartCount();
                 
-                // If we're on the cart page, refresh the display
                 if (window.location.hash === '#cart') {
                     this.displayCartItems();
                 }
@@ -67,7 +65,6 @@ class Cart {
         this.saveCart();
         this.updateCartCount();
         
-        // If we're on the cart page, refresh the display
         if (window.location.hash === '#cart') {
             this.displayCartItems();
         }
@@ -166,18 +163,14 @@ class Cart {
             return;
         }
 
-        // In a real application, this would redirect to a checkout page
-        // or send the cart data to a backend
         if (window.app) {
             window.app.showAlert(`Proceeding to checkout with ${this.getItemCount()} items. Total: $${this.getTotal().toFixed(2)}`, 'info');
         }
         
-        // For demo purposes, we'll clear the cart after "checkout"
         setTimeout(() => {
             this.clearCart();
         }, 2000);
     }
 }
 
-// Initialize cart
 const cart = new Cart();
