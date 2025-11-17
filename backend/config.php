@@ -1,28 +1,21 @@
 <?php
 class Database {
-   private static $host = 'localhost';
-   private static $dbName = 'ferrari_automotive_group';
-   private static $username = 'root';
-   private static $password = '';
-   private static $connection = null;
-
-   public static function connect() {
-       if (self::$connection === null) {
-           try {
-               self::$connection = new PDO(
-                   "mysql:host=" . self::$host . ";dbname=" . self::$dbName,
-                   self::$username,
-                   self::$password,
-                   [
-                       PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                       PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-                   ]
-               );
-           } catch (PDOException $e) {
-               die("Connection failed: " . $e->getMessage());
-           }
-       }
-       return self::$connection;
-   }
+    private static $connection = null;
+    
+    public static function connect() {
+        if (self::$connection === null) {
+            try {
+                self::$connection = new PDO(
+                    "mysql:host=localhost;dbname=aura_jewels_db;charset=utf8mb4",
+                    "root", 
+                    "root"
+                );
+                self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            } catch(PDOException $e) {
+                die("Database connection failed: " . $e->getMessage());
+            }
+        }
+        return self::$connection;
+    }
 }
 ?>

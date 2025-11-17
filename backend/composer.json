@@ -1,0 +1,10 @@
+{
+    "require": {
+        "mikecao/flight": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "rest/services/"
+        }
+    }
+}
